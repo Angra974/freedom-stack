@@ -1,34 +1,31 @@
 ---
+import { changeLanguage } from "i18next";
 import DashboardLayout from "@/layouts/Layout.astro";
 import { eq, db, Posts } from "astro:db";
 import { actions } from "astro:actions";
 
+changeLanguage("en");
+
 // Get the post slug from params
 const { slug } = Astro.params;
-
 // Get current user
 const user = await Astro.locals.currentUser();
-
 if (!user) {
-  return Astro.redirect("/login");
+    return Astro.redirect("/login");
 }
-
 if (!slug) {
-  return Astro.redirect("/dashboard/posts");
+    return Astro.redirect("/dashboard/posts");
 }
-
 let post;
 // Fetch the post
 post = await db.select().from(Posts).where(eq(Posts.slug, slug)).get();
-
 const result = await Astro.getActionResult(actions.posts.update);
 if (result?.data?.success) {
-  post = result.data.post;
-  return Astro.redirect(`/posts/${post.slug}`);
+    post = result.data.post;
+    return Astro.redirect(`/posts/${post.slug}`);
 }
-
 if (!post) {
-  return Astro.redirect("/posts");
+    return Astro.redirect("/posts");
 }
 ---
 

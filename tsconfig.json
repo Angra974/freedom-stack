@@ -8,9 +8,17 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@sections/*": ["src/components/sections/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@sections/*": [
+        "src/components/sections/*"
+      ]
     }
   },
-  "exclude": ["node_modules", "dist", "public"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public"
+  ]
 }

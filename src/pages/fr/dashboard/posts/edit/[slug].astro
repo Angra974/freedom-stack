@@ -1,22 +1,35 @@
 ---
 import { changeLanguage } from "i18next";
-import Layout from "@/layouts/Layout.astro";
+import DashboardLayout from "@/layouts/Layout.astro";
+import { eq, db, Posts } from "astro:db";
 import { actions } from "astro:actions";
 
-changeLanguage("en");
+changeLanguage("fr");
 
-if (!Astro.locals.auth().userId) {
-    return Astro.redirect("/");
-}
+// Get the post slug from params
+const { slug } = Astro.params;
+// Get current user
 const user = await Astro.locals.currentUser();
-const result = Astro.getActionResult(actions.posts.create);
-// Redirect on successful post creation
+if (!user) {
+    return Astro.redirect("/login");
+}
+if (!slug) {
+    return Astro.redirect("/dashboard/posts");
+}
+let post;
+// Fetch the post
+post = await db.select().from(Posts).where(eq(Posts.slug, slug)).get();
+const result = await Astro.getActionResult(actions.posts.update);
 if (result?.data?.success) {
+    post = result.data.post;
+    return Astro.redirect(`/posts/${post.slug}`);
+}
+if (!post) {
     return Astro.redirect("/posts");
 }
 ---
 
-<Layout title="New Post">
+<DashboardLayout title={`Edit Post: ${post?.title}`}>
   <script src="/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
   <script is:inline>
     tinymce.init({
@@ -36,26 +49,18 @@ if (result?.data?.success) {
         <ul class="!p-0 !m-0">
           <li><a href="/">Home</a></li>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li>New Post</li>
+          <li>Edit Post</li>
         </ul>
       </div>
+      <h1>Edit Post</h1>
 
-      <h1>New Post</h1>
-
-      {
-        result?.error && (
-          <div class="alert alert-error mb-4">
-            <span>{result.error.message}</span>
-          </div>
-        )
-      }
-
-      <form class="mt-6 flex flex-col gap-6" method="POST" action={actions.posts.create}>
+      <form class="mt-6 flex flex-col gap-6" method="POST" action={actions.posts.update}>
         <textarea
           class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
           id="content"
           name="content"
-          rows="10"></textarea>
+          rows="10">{post.content || ""}</textarea
+        >
         <div class="h-0.5 my-2 w-full bg-slate-200"></div>
         <div class="flex flex-col gap-4 p-6 rounded-xl bg-slate-200">
           <div class="grid grid-cols-2 gap-6">
@@ -68,6 +73,7 @@ if (result?.data?.success) {
                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="title"
                 name="title"
+                value={post.title || ""}
                 placeholder="Enter the post title"
               />
             </div>
@@ -98,7 +104,8 @@ if (result?.data?.success) {
               id="description"
               name="description"
               placeholder="Enter a brief description of the post"
-              rows="3"></textarea>
+              rows="3">{post.description || ""}</textarea
+            >
           </div>
           <div class="grid grid-cols-2 gap-6">
             <div class="grid gap-2">
@@ -124,10 +131,12 @@ if (result?.data?.success) {
                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="imageUrl"
                 name="imageUrl"
+                value={post.imageUrl || ""}
                 placeholder="Enter the image URL"
               />
             </div>
           </div>
+          <input type="hidden" name="id" value={post.id} />
           <div class="grid grid-cols-2 gap-6">
             <div class="grid gap-2">
               <label
@@ -138,6 +147,7 @@ if (result?.data?.success) {
                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="imageAlt"
                 name="imageAlt"
+                value={post.imageAlt || ""}
                 placeholder="Enter the image alt text"
               />
             </div>
@@ -166,7 +176,7 @@ if (result?.data?.success) {
               name="slug"
               placeholder="blog-post-slug"
               pattern="[a-z0-9\\-]+"
-              x-data="{ slug: '' }"
+              x-data={`{ slug: '${post.slug || ""}' }`}
               x-on:input="slug = $event.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/^-+|-+$/g, '').replace(/-{2,}/g, '-')"
               x-bind:value="slug"
             />
@@ -178,4 +188,4 @@ if (result?.data?.success) {
       </form>
     </div>
   </div>
-</Layout>
+</DashboardLayout>

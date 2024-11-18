@@ -17,5 +17,9 @@
   "editor.rulers": [120],
   "files.associations": {
     "*.mdx": "markdown"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/i18n",
+    "src/i18n/locales"
+  ]
 }

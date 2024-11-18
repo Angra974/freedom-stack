@@ -1,0 +1,32 @@
+{
+  "welcome": "Welcome to Freedom Stack",
+  "description": "A full-stack Astro starter kit that feels freeing and is free.",
+  "hero_title": "Freedom Stack",
+  "hero_subtitle": "A full-stack Astro starter kit that feels freeing and is free.",
+  "hero_cta_text": "Deploy to Netlify",
+  "hero_cta_href": "https://app.netlify.com/start/deploy?repository=https://github.com/cameronapak/freedom-stack",
+  "hero_secondary_cta_text": "GitHub",
+  "hero_secondary_cta_href": "https://github.com/cameronapak/freedom-stack",
+  "half_text_half_image_title_1": "Create full-stack web apps",
+  "half_text_half_image_subtitle_1": "Save time, money, and headaches by using Freedom Stack.",
+  "half_text_half_image_title_2": "No need to reinvent the wheel",
+  "half_text_half_image_subtitle_2": "Auth? Database? Components? This starter kit has you covered.",
+  "half_text_half_image_title_3": "Focus on the fun stuff",
+  "half_text_half_image_subtitle_3": "Enjoy building apps, not configuring servers. Incredibly easy to deploy.",
+  "quote_quote": "enjoyed learning about Freedom Stack, Cam. Really a refreshing take on SaaS boilerplates ✨ plus I love Astro, too!",
+  "quote_title": "@poppacalypse",
+  "quote_author": "Carl Poppa",
+  "features_title": "Technologies Inside",
+  "faq_title": "FAQ",
+  "footer_resources_title": "Resources",
+  "footer_legal_title": "Legal",
+  "footer_resources_items": [
+    { "text": "Code on GitHub", "href": "https://github.com/cameronapak/freedom-stack" },
+    { "text": "Buy Me a Coffee", "href": "https://buymeacoffee.com/campak" },
+    { "text": "Contact Cam", "href": "https://cameronpak.com/pages/contact-cam" }
+  ],
+  "footer_legal_items": [
+    { "text": "Code of Conduct", "href": "https://github.com/cameronapak/freedom-stack?tab=coc-ov-file#readme" },
+    { "text": "MIT License", "href": "https://github.com/cameronapak/freedom-stack?tab=mit-1-ov-file#readme" }
+  ]
+}

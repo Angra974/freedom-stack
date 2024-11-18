@@ -1,6 +1,8 @@
 ---
 import { SEO } from "astro-seo";
 import Icon from "astro-iconify";
+// src/pages/index.astro
+import i18next, { t } from "i18next";
 import "@/global.css";
 
 interface Props {
@@ -16,14 +18,7 @@ const { title, description = "", bodyClasses, canonicalUrl, faviconUrl, ogImageU
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  x-data={`{
-    toastMessage: '',
-    toastErrorMessage: ''
-  }`}
-  class="bg-slate-50"
->
+<html lang={i18next.language} x-data={} class="bg-slate-50">
   <!-- "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life." John 3:16 NIV -->
   <head>
     <meta charset="UTF-8" />
@@ -76,18 +71,9 @@ const { title, description = "", bodyClasses, canonicalUrl, faviconUrl, ogImageU
     />
   </head>
 
-  <body class={`max-w-screen w-full ${bodyClasses}`}>
+  <body class={}>
     <div
-      x-data={`{
-        backupOfToastMessage: '',
-        init() {
-          $watch('toastMessage', () => {
-            if (toastMessage) {
-              this.backupOfToastMessage = toastMessage
-            }
-          })
-        }
-      }`}
+      x-data={}
       x-cloak
       x-show="toastMessage"
       x-transition:enter="transition ease-out duration-300"
@@ -106,16 +92,7 @@ const { title, description = "", bodyClasses, canonicalUrl, faviconUrl, ogImageU
     </div>
 
     <div
-      x-data={`{
-        backupOfToastErrorMessage: '',
-        init() {
-          $watch('toastErrorMessage', () => {
-            if (toastErrorMessage) {
-              this.backupOfToastErrorMessage = toastErrorMessage
-            }
-          })
-        }
-      }`}
+      x-data={}
       x-cloak
       x-show="toastErrorMessage"
       x-transition:enter="transition ease-out duration-300"

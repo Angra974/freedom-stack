@@ -3,7 +3,7 @@ import { changeLanguage } from "i18next";
 import { SignOutButton } from "@clerk/astro/components";
 import Layout from "@/layouts/Layout.astro";
 
-changeLanguage("en");
+changeLanguage("fr");
 
 if (!Astro.locals.auth().userId) {
     return Astro.redirect("/login");

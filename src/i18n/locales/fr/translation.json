@@ -1,0 +1,32 @@
+{
+  "welcome": "Bienvenue sur Freedom Stack",
+  "description": "Un kit de démarrage full-stack Astro qui se sent libérateur et est gratuit.",
+  "hero_title": "Freedom Stack",
+  "hero_subtitle": "Un kit de démarrage full-stack Astro qui se sent libérateur et est gratuit.",
+  "hero_cta_text": "Déployer sur Netlify",
+  "hero_cta_href": "https://app.netlify.com/start/deploy?repository=https://github.com/cameronapak/freedom-stack",
+  "hero_secondary_cta_text": "GitHub",
+  "hero_secondary_cta_href": "https://github.com/cameronapak/freedom-stack",
+  "half_text_half_image_title_1": "Créer des applications web full-stack",
+  "half_text_half_image_subtitle_1": "Gagnez du temps, de l'argent et des maux de tête en utilisant Freedom Stack.",
+  "half_text_half_image_title_2": "Pas besoin de réinventer la roue",
+  "half_text_half_image_subtitle_2": "Authentification ? Base de données ? Composants ? Ce kit de démarrage vous couvre.",
+  "half_text_half_image_title_3": "Concentrez-vous sur le plaisir",
+  "half_text_half_image_subtitle_3": "Profitez de la construction d'applications, pas de la configuration des serveurs. Incroyablement facile à déployer.",
+  "quote_quote": "J'ai beaucoup apprécié d'apprendre sur Freedom Stack, Cam. Vraiment une approche rafraîchissante des boilerplates SaaS ✨ et j'aime aussi Astro !",
+  "quote_title": "@poppacalypse",
+  "quote_author": "Carl Poppa",
+  "features_title": "Technologies à l'intérieur",
+  "faq_title": "FAQ",
+  "footer_resources_title": "Ressources",
+  "footer_legal_title": "Légal",
+  "footer_resources_items": [
+    { "text": "Code sur GitHub", "href": "https://github.com/cameronapak/freedom-stack" },
+    { "text": "Offrez-moi un café", "href": "https://buymeacoffee.com/campak" },
+    { "text": "Contactez Cam", "href": "https://cameronpak.com/pages/contact-cam" }
+  ],
+  "footer_legal_items": [
+    { "text": "Code de conduite", "href": "https://github.com/cameronapak/freedom-stack?tab=coc-ov-file#readme" },
+    { "text": "Licence MIT", "href": "https://github.com/cameronapak/freedom-stack?tab=mit-1-ov-file#readme" }
+  ]
+}

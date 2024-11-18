@@ -56,7 +56,7 @@ Ogres have layers. Onions have layers. Parfaits have layers. And, Freedom Stack 
 
 ### Bonus Layer
 
-- A well-prompted `.cursorrules` file for [Cursor's AI IDE](https://cursor.com/) to be a friendly guide helping you using this stack easier.
+- A well-prompted  file for [Cursor's AI IDE](https://cursor.com/) to be a friendly guide helping you using this stack easier.
 
 ## Get Started 🚀
 
@@ -79,7 +79,7 @@ Create a new [Clerk](https://clerk.com/) project.
 
 ### 4. Set Environment Variables
 
-Let's create the `.env` file by copying the `.env.example` file.
+Let's create the  file by copying the  file.
 
 ```bash
 cp .env.example .env
@@ -94,7 +94,7 @@ This project uses the following environment variables:
 | `CLERK_SECRET_KEY`             | Secret key for Clerk authentication      | Required | [Clerk](https://clerk.com/docs/deployments/clerk-environment-variables#clerk-publishable-and-secret-keys) |
 | `PUBLIC_CLERK_PUBLISHABLE_KEY` | Publishable key for Clerk authentication | Required | [Clerk](https://clerk.com/docs/deployments/clerk-environment-variables#clerk-publishable-and-secret-keys) |
 
-Make sure to set these variables in your environment or `.env` file before running the application.
+Make sure to set these variables in your environment or  file before running the application.
 
 ### 5. Run the Development Server
 
