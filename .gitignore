@@ -30,3 +30,6 @@ pnpm-lock.yaml
 public/tinymce/
 # Ignore all versions of tinymce in the specified path
 node_modules/.pnpm/tinymce@*/node_modules/tinymce
+
+# ignore generated languages src folders ( ignore folders which name is 2 chars long )
+src/pages/??/
